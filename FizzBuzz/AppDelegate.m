@@ -17,8 +17,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    for (int i=1; i < 101; i++) {
+        if ([self isBuzzed: i] && [self isFizzed: i]) {
+            NSLog(@"!!!FizzBuzz!!!");
+        } else if ([self isBuzzed: i]) {
+            NSLog(@"Buzz is %d", i);
+        } else if ([self isFizzed: i]) {
+            NSLog(@"Fizz is %d", i);
+        } else {
+            NSLog(@"%d", i);
+        }
+    }
+
     return YES;
 }
+
+- (BOOL)isBuzzed:(int)buzzNum {
+    if ((buzzNum % 3) == 0 || [[NSString stringWithFormat:@"%d", buzzNum] containsString:@"3"]) {
+        return true;
+    } else {
+       return false;
+    }
+}
+
+- (BOOL) isFizzed:(int)fizzNum {
+    if ((fizzNum % 5) == 0 || [[NSString stringWithFormat:@"%d", fizzNum] containsString: @"5"]) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
